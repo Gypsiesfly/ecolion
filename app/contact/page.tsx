@@ -1,0 +1,156 @@
+import StickyNav from "@/components/sticky-nav"
+import Footer from "@/components/footer"
+import { Mail, Phone, MapPin } from "lucide-react"
+
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <StickyNav />
+
+      {/* Hero Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h1 className="text-5xl md:text-6xl font-black text-center text-black">CONTACT US</h1>
+        </div>
+      </section>
+
+      {/* Map and Form Section */}
+      <section className="bg-[#171e19] py-12 md:py-16 m-[10px] sm:m-[15px]">
+        <div className="mx-auto px-8 w-full">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Map */}
+            <div className="w-full h-[500px] bg-gray-200 rounded-lg overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.8267!2d0.0489!3d51.4589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDI3JzMyLjAiTiAwwrAwMicyOC4wIkU!5e0!3m2!1sen!2suk!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ecolion Housing Location"
+              />
+            </div>
+
+            {/* Contact Form */}
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-white text-sm mb-2">
+                  Your name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Jhon Smith"
+                  className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-white text-sm mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="email@gmail.com"
+                  className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-white text-sm mb-2">
+                  Phone number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Jhon Smith"
+                  className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-white text-sm mb-2">
+                  Your message
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  placeholder="Type your message..."
+                  className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/50 py-3 px-4 focus:outline-none focus:border-white transition-colors resize-none"
+                />
+              </div>
+
+              <button className="w-full bg-white text-black font-bold py-4 px-6 hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
+                Send message
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Urgent Assistance Section */}
+      <section className="bg-[#fef5d0] m-[10px] sm:m-[15px]">
+        <div className="container mx-auto p-6 md:pl-4 md:pr-0">
+          <div className="flex flex-col gap-8 items-center">
+            {/* Title and Image Row */}
+            <div className="flex items-center gap-8 w-full">
+              <div className="w-1/2">
+                <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">NEED URGENT ASSISTANCE?</h2>
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-6 w-full">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-[#fef5d0]" />
+                </div>
+                <p className="text-black text-lg">enquiries@ecolionhousing.co.uk</p>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-[#fef5d0]" />
+                </div>
+                <p className="text-black text-lg">+447412979636</p>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-[#fef5d0]" />
+                </div>
+                <p className="text-black text-lg">
+                  214 Wricklemarsh Road, Wricklemarsh Road
+                  <br />
+                  London, England, SE3 8DN
+                </p>
+              </div>
+            </div>
+
+            {/* Image at bottom left */}
+            <div className="w-full relative hidden md:block">
+              <div className="absolute left-0 w-[300px] h-[250px] md:h-[200px] overflow-visible">
+                <img
+                  src="/images/Contact page/bg image.png"
+                  alt="Happy young people together"
+                  className="w-full h-full object-cover object-bottom bottom-0 left-0"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  )
+}
