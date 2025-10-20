@@ -84,7 +84,7 @@ export function HeroSection() {
             </div>
 
             <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 lg:flex-[0.5] w-full">
-              <h1 className="font-[family-name:var(--font-anton)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight uppercase tracking-tight text-balance pr-0 lg:max-w-[520px] xl:max-w-[600px] bg-gradient-to-r from-[#FEF5D0] via-white to-[#FEF5D0] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite]">
+              <h1 className="font-[family-name:var(--font-anton)] text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight uppercase tracking-tight text-balance pr-0 lg:max-w-[520px] xl:max-w-[600px] bg-gradient-to-r from-[#FEF5D0] via-white to-[#FEF5D0] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite]">
                 SUPPORTING YOUNG PEOPLE WITH SAFETY, STABILITY, AND GROWTH.
               </h1>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-white">

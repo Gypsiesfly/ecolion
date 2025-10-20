@@ -18,7 +18,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/Ecolion homes logo.svg"
+              src="/Ecolion homes logo1.svg"
               alt="Ecolion Housing"
               width={120}
               height={40}

@@ -42,7 +42,7 @@ export function StickyNav() {
             {/* Logo on dark background */}
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/Ecolion homes logo.svg"
+                src="/Ecolion homes logo1.svg"
                 alt="Ecolion Housing"
                 width={120}
                 height={40}
@@ -384,13 +384,15 @@ export function StickyNav() {
                 rel="noopener noreferrer"
                 className="bg-[#171E19] rounded-full p-4 hover:bg-[#171E19]/80 transition-colors"
               >
-                <Image 
-                  src="/Icons/Instagram.svg" 
-                  alt="Instagram" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8"
-                />
+                <div className="w-8 h-8 relative">
+                  <Image 
+                    src="/Icons/Instagram.svg" 
+                    alt="Instagram" 
+                    fill
+                    className="object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                </div>
               </Link>
               <Link
                 href="https://tiktok.com"
@@ -398,13 +400,15 @@ export function StickyNav() {
                 rel="noopener noreferrer"
                 className="bg-[#171E19] rounded-full p-4 hover:bg-[#171E19]/80 transition-colors"
               >
-                <Image 
-                  src="/Icons/tiktok.svg" 
-                  alt="TikTok" 
-                  width={32} 
-                  height={32} 
-                  className="w-8 h-8"
-                />
+                <div className="w-8 h-8 relative">
+                  <Image 
+                    src="/Icons/tiktok.svg" 
+                    alt="TikTok" 
+                    fill
+                    className="object-contain"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                </div>
               </Link>
             </div>
           </div>

@@ -32,6 +32,24 @@ export const metadata: Metadata = {
   title: "Ecolion Supported Housing Limited",
   description: "Supporting young people with safety, stability, and growth",
   generator: "v0.app",
+  icons: {
+    icon: "/images/Favicon.png",
+    apple: "/images/Favicon.png",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/images/Favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Ecolion Supported Housing Limited",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/Favicon.png"],
+  },
 }
 
 export default function RootLayout({
