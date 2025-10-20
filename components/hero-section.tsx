@@ -11,13 +11,13 @@ export function HeroSection() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-[#171E19] z-50 flex flex-col items-center justify-center">
           <button
-            className="absolute top-8 right-8 text-[#FEF5D0] text-5xl font-light hover:opacity-80 transition-opacity"
+            className="absolute top-6 right-6 text-[#FEF5D0] text-4xl font-light hover:opacity-80 transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
           >
             ×
           </button>
-          <nav className="flex flex-col items-center justify-center gap-8">
+          <nav className="flex flex-col items-center justify-center gap-5 -mt-10">
             <a
               href="/"
               className="text-3xl md:text-4xl font-medium text-[#FEF5D0] hover:opacity-80 transition-opacity"
@@ -91,7 +91,10 @@ export function HeroSection() {
                 A home for young people aged 16 to 25 at risk of homelessness
               </p>
               <div className="relative w-full h-12 sm:h-14 md:h-14 lg:h-16">
-                <button className="w-full h-full bg-white text-black font-medium text-xs sm:text-sm md:text-base lg:text-lg flex items-center justify-center hover:opacity-90 transition-opacity">
+                <a 
+                  href="/contact" 
+                  className="w-full h-full bg-white text-black font-medium text-xs sm:text-sm md:text-base lg:text-lg flex items-center justify-center hover:opacity-90 transition-opacity"
+                >
                   <span>Register now</span>
                   <div className="absolute right-1 sm:right-1.5 top-1 sm:top-1.5 bottom-1 sm:bottom-1.5 w-10 sm:w-12 md:w-14 lg:w-[56px] bg-black flex items-center justify-center">
                     <Image
@@ -102,7 +105,7 @@ export function HeroSection() {
                       className="w-5 h-7 sm:w-6 sm:h-8 md:w-7 md:h-9 lg:w-9 lg:h-12"
                     />
                   </div>
-                </button>
+                </a>
               </div>
             </div>
           </div>

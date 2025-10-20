@@ -98,53 +98,48 @@ export default function ContactPage() {
       </section>
 
       {/* Urgent Assistance Section */}
-      <section className="bg-[#fef5d0] m-[10px] sm:m-[15px]">
-        <div className="container mx-auto p-6 md:pl-4 md:pr-0">
-          <div className="flex flex-col gap-8 items-center">
-            {/* Title and Image Row */}
-            <div className="flex items-center gap-8 w-full">
-              <div className="w-1/2">
-                <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">NEED URGENT ASSISTANCE?</h2>
+      <section className="bg-[#fef5d0] m-[10px] sm:m-[15px] py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Left side - Contact Info */}
+            <div className="space-y-8 order-2 md:order-1">
+              <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">NEED URGENT ASSISTANCE?</h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-[#fef5d0]" />
+                  </div>
+                  <p className="text-black text-lg">enquiries@ecolionhousing.co.uk</p>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-[#fef5d0]" />
+                  </div>
+                  <p className="text-black text-lg">+447412979636</p>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0 mt-1">
+                    <MapPin className="w-5 h-5 text-[#fef5d0]" />
+                  </div>
+                  <p className="text-black text-lg">
+                    214 Wricklemarsh Road, Wricklemarsh Road
+                    <br />
+                    London, England, SE3 8DN
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Contact Information */}
-            <div className="space-y-6 w-full">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-[#fef5d0]" />
-                </div>
-                <p className="text-black text-lg">enquiries@ecolionhousing.co.uk</p>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-[#fef5d0]" />
-                </div>
-                <p className="text-black text-lg">+447412979636</p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-[#fef5d0]" />
-                </div>
-                <p className="text-black text-lg">
-                  214 Wricklemarsh Road, Wricklemarsh Road
-                  <br />
-                  London, England, SE3 8DN
-                </p>
-              </div>
-            </div>
-
-            {/* Image at bottom left */}
-            <div className="w-full relative hidden md:block">
-              <div className="absolute left-0 w-[300px] h-[250px] md:h-[200px] overflow-visible">
-                <img
-                  src="/images/Contact page/bg image.png"
-                  alt="Happy young people together"
-                  className="w-full h-full object-cover object-bottom bottom-0 left-0"
-                />
-              </div>
+            {/* Right side - Image */}
+            <div className="order-1 md:order-2 h-64 md:h-auto overflow-hidden rounded-lg shadow-lg">
+              <img
+                src="/images/Contact page/happy youths.jpg"
+                alt="Ecolion Housing Assistance"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
           </div>
         </div>

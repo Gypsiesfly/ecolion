@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown, Hand } from "lucide-react"
+import { keyframes } from "@emotion/react"
 import Image from "next/image"
 
 export function StickyNav() {
@@ -182,7 +183,7 @@ export function StickyNav() {
               className="absolute top-8 right-8 text-black hover:text-black/70 transition-colors"
               aria-label="Close menu"
             >
-              <X className="h-10 w-10 stroke-[3]" />
+              <X className="h-10 w-10 stroke-[1.5]" />
             </button>
 
             {/* Menu Items with Alternating Layout */}
@@ -194,9 +195,21 @@ export function StickyNav() {
                 className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-8 items-center group"
               >
                 <div className="flex items-center gap-4">
-                  {pathname === '/' && <Hand className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90" strokeWidth={2} />}
+                  {pathname === '/' ? (
+                    <Hand 
+                      className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90 animate-pulse" 
+                      strokeWidth={1.5}
+                      style={{
+                        animationDuration: '2s',
+                        animationIterationCount: 'infinite',
+                        animationTimingFunction: 'ease-in-out',
+                      }}
+                    />
+                  ) : (
+                    <div className="w-12 h-12 md:w-16 md:h-16"></div> // Empty div to maintain spacing
+                  )}
                   <h2
-                    className="text-5xl md:text-7xl font-black tracking-tight text-black uppercase"
+                    className="text-5xl md:text-7xl font-normal tracking-tight text-black uppercase"
                     style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
                   >
                     HOME
@@ -222,12 +235,27 @@ export function StickyNav() {
                   </p>
                   <span className="text-[#FEF5D0] text-4xl md:text-5xl font-bold shrink-0">02</span>
                 </div>
-                <h2
-                  className="text-5xl md:text-7xl font-black tracking-tight text-black uppercase text-right order-1 md:order-2"
-                  style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-                >
-                  ABOUT US
-                </h2>
+                <div className="flex items-center gap-4 justify-end order-1 md:order-2">
+                  {pathname === '/about' ? (
+                    <Hand 
+                      className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90 animate-pulse" 
+                      strokeWidth={1.5}
+                      style={{
+                        animationDuration: '2s',
+                        animationIterationCount: 'infinite',
+                        animationTimingFunction: 'ease-in-out',
+                      }}
+                    />
+                  ) : (
+                    <div className="w-12 h-12 md:w-16 md:h-16"></div>
+                  )}
+                  <h2
+                    className="text-5xl md:text-7xl font-normal tracking-tight text-black uppercase"
+                    style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+                  >
+                    ABOUT US
+                  </h2>
+                </div>
               </Link>
 
               {/* SERVICES - Left: Text, Right: Description Box */}
@@ -236,12 +264,27 @@ export function StickyNav() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-8 items-center group"
               >
-                <h2
-                  className="text-5xl md:text-7xl font-black tracking-tight text-black uppercase"
-                  style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-                >
-                  SERVICES
-                </h2>
+                <div className="flex items-center gap-4">
+                  {pathname === '/services' ? (
+                    <Hand 
+                      className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90 animate-pulse" 
+                      strokeWidth={1.5}
+                      style={{
+                        animationDuration: '2s',
+                        animationIterationCount: 'infinite',
+                        animationTimingFunction: 'ease-in-out',
+                      }}
+                    />
+                  ) : (
+                    <div className="w-12 h-12 md:w-16 md:h-16"></div>
+                  )}
+                  <h2
+                    className="text-5xl md:text-7xl font-normal tracking-tight text-black uppercase"
+                    style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+                  >
+                    SERVICES
+                  </h2>
+                </div>
                 <div className="bg-[#171E19] p-6 md:p-8 flex items-center justify-between gap-4 group-hover:bg-[#171E19]/90 transition-colors">
                   <span className="text-[#FEF5D0] text-4xl md:text-5xl font-bold shrink-0">03</span>
                   <p className="text-[#FEF5D0] text-sm md:text-base text-right">
@@ -258,12 +301,27 @@ export function StickyNav() {
                   </p>
                   <span className="text-[#FEF5D0] text-4xl md:text-5xl font-bold shrink-0">04</span>
                 </div>
-                <h2
-                  className="text-4xl md:text-6xl font-black tracking-tight text-black uppercase text-right order-1 md:order-2 leading-tight"
-                  style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-                >
-                  RESOURCES & POLICIES
-                </h2>
+                <div className="flex items-center gap-4 justify-end order-1 md:order-2">
+                  {(pathname === '/faqs' || pathname === '/privacy-policy') ? (
+                    <Hand 
+                      className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90 animate-pulse" 
+                      strokeWidth={1.5}
+                      style={{
+                        animationDuration: '2s',
+                        animationIterationCount: 'infinite',
+                        animationTimingFunction: 'ease-in-out',
+                      }}
+                    />
+                  ) : (
+                    <div className="w-12 h-12 md:w-16 md:h-16"></div>
+                  )}
+                  <h2
+                    className="text-4xl md:text-6xl font-normal tracking-tight text-black uppercase leading-tight"
+                    style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+                  >
+                    RESOURCES & POLICIES
+                  </h2>
+                </div>
               </div>
 
               {/* Sub-links for Resources & Policies */}
@@ -290,12 +348,27 @@ export function StickyNav() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 md:gap-8 items-center group"
               >
-                <h2
-                  className="text-5xl md:text-7xl font-black tracking-tight text-black uppercase"
-                  style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-                >
-                  CONTACT US
-                </h2>
+                <div className="flex items-center gap-4">
+                  {pathname === '/contact' ? (
+                    <Hand 
+                      className="h-12 w-12 md:h-16 md:w-16 text-black rotate-90 animate-pulse" 
+                      strokeWidth={1.5}
+                      style={{
+                        animationDuration: '2s',
+                        animationIterationCount: 'infinite',
+                        animationTimingFunction: 'ease-in-out',
+                      }}
+                    />
+                  ) : (
+                    <div className="w-12 h-12 md:w-16 md:h-16"></div>
+                  )}
+                  <h2
+                    className="text-5xl md:text-7xl font-normal tracking-tight text-black uppercase"
+                    style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+                  >
+                    CONTACT US
+                  </h2>
+                </div>
                 <div className="bg-[#171E19] p-6 md:p-8 flex items-center justify-between gap-4 group-hover:bg-[#171E19]/90 transition-colors">
                   <p className="text-[#FEF5D0] text-sm md:text-base">Reach out to us with any questions or concerns.</p>
                   <span className="text-[#FEF5D0] text-4xl md:text-5xl font-bold shrink-0">05</span>

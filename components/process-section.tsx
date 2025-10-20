@@ -118,9 +118,9 @@ export function ProcessSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12">
-        <h2 className="text-2xl md:text-3xl text-center mb-12 md:mb-16">Our process</h2>
+    <section className="py-12 sm:py-16 md:py-24 bg-white m-[10px] sm:m-[15px] relative">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#171E19]">Our Process</h2>
 
         <div className="max-w-4xl mx-auto">
           {steps.map((step, index) => (
@@ -176,8 +176,9 @@ export function ProcessSection() {
                     {step.buttons.length > 0 && (
                       <div className="flex flex-wrap gap-4">
                         {step.buttons.map((button, btnIndex) => (
-                          <button
+                          <a
                             key={btnIndex}
+                            href="/contact"
                             className="bg-[#FEF5D0] hover:bg-[#FEF5D0]/90 text-black font-medium px-6 py-3 flex items-center gap-3 transition-colors"
                           >
                             {button.icon === "phone" && <Phone className="h-5 w-5" />}
@@ -185,7 +186,7 @@ export function ProcessSection() {
                             <div className="bg-black p-2">
                               <ArrowRight className="h-4 w-4 text-white" />
                             </div>
-                          </button>
+                          </a>
                         ))}
                       </div>
                     )}

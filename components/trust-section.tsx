@@ -34,12 +34,15 @@ export function TrustSection() {
             </h2>
 
             <div className="relative w-full sm:max-w-md lg:max-w-[300px] h-14">
-              <button className="w-full h-full bg-[#FEF5D0] text-black font-medium text-sm sm:text-base flex items-center justify-between px-2 hover:opacity-90 transition-opacity">
+              <a 
+                href="/contact" 
+                className="w-full h-full bg-[#FEF5D0] text-black font-medium text-sm sm:text-base flex items-center justify-between px-2 hover:opacity-90 transition-opacity"
+              >
                 <span className="flex-1 text-center">Start your journey today</span>
                 <div className="w-12 sm:w-14 h-[calc(100%-8px)] bg-black flex items-center justify-center flex-shrink-0">
                   <ArrowRight className="h-5 w-5 text-[#FEF5D0]" />
                 </div>
-              </button>
+              </a>
             </div>
           </div>
 
