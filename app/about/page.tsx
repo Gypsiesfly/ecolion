@@ -161,48 +161,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The Team Section */}
+      {/* Leadership Team Section */}
       <section className="bg-[#FEF5D0] py-16 md:py-24 px-4 md:px-8 lg:px-12">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-16">THE TEAM</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-16">LEADERSHIP TEAM</h2>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {/* Founder */}
-            <div className="space-y-6">
-              <h3 className="font-[family-name:var(--font-anton)] text-3xl md:text-4xl uppercase">
-                CHIOMA OLI,
-                <br />
-                FOUNDER
-              </h3>
-              <div className="relative w-64 h-64 mx-auto md:mx-0">
-                <Image src="/images/About/Founder Image.png" alt="Chioma Oli" fill className="object-cover" />
-              </div>
-              <p className="text-sm md:text-base leading-relaxed">
-                Mrs Chioma Oli embodies a caring mother and empathic leader. With a User Experience Researcher
-                background, she crafts solutions to enhance team performance and growth. Her PhD in Law from SOAS and
-                degree in International Law and Human Geography enrich our care approach. Her caregiver experience
-                deepens her empathy. In our accommodation, every young person finds a nurturing environment focused on
-                their growth.
-              </p>
+          {/* Manager */}
+          <div className="space-y-6 max-w-2xl mx-auto">
+            <h3 className="font-[family-name:var(--font-anton)] text-3xl md:text-4xl uppercase">
+              MICHELLE JOHN,
+              <br />
+              AREA MANAGER
+            </h3>
+            <div className="relative w-64 h-64 mx-auto">
+              <Image src="/images/About/profile.png" alt="Michelle John" fill className="object-cover" />
             </div>
-
-            {/* Manager */}
-            <div className="space-y-6">
-              <h3 className="font-[family-name:var(--font-anton)] text-3xl md:text-4xl uppercase">
-                MRS MICHELLE JOHN,
-                <br />
-                MANAGER
-              </h3>
-              <div className="relative w-64 h-64 mx-auto md:mx-0">
-                <Image src="/images/About/profile.png" alt="Mrs Michelle John" fill className="object-cover" />
-              </div>
-              <p className="text-sm md:text-base leading-relaxed">
-                Meet our manager, an expert in social care with 24 years of experience. She excelled in advocacy and
-                client assessment, supporting homeless individuals at Thames Reach. Her roles with Carr-Gomm and Look
-                Ahead enriched her experience. She began her career supporting disabled and senior citizens and earned a
-                BSc in Psychology and a Postgraduate Certificate in Dual Diagnosis.
-              </p>
-            </div>
+            <p className="text-sm md:text-base leading-relaxed">
+              Meet our manager, an expert in social care with 24 years of experience. She excelled in advocacy and
+              client assessment, supporting homeless individuals at Thames Reach. Her roles with Carr-Gomm and Look
+              Ahead enriched her experience. She began her career supporting disabled and senior citizens and earned a
+              BSc in Psychology and a Postgraduate Certificate in Dual Diagnosis.
+            </p>
           </div>
         </div>
       </section>
