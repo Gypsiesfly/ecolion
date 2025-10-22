@@ -58,7 +58,7 @@ export function MissionSection() {
             }}
           >
             <Image
-              src="/images/Section Image1.png"
+              src="/images/Section Image1.jpg"
               alt="Supportive environment"
               fill
               className="object-cover"
