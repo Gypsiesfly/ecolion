@@ -1,8 +1,101 @@
-import StickyNav from "@/components/sticky-nav"
-import Footer from "@/components/footer"
-import { Mail, Phone, MapPin } from "lucide-react"
+"use client";
+
+import StickyNav from "@/components/sticky-nav";
+import Footer from "@/components/footer";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
+
+const resetForm = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  message: "",
+};
+
+const resetFormErrors = {
+  name: false,
+  email: false,
+  phoneNumber: false,
+  message: false,
+};
 
 export default function ContactPage() {
+  const [contactForm, setContactForm] = useState(resetForm);
+  const [formErrors, setFormErrors] = useState(resetFormErrors);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const NAME_REGEX = /^[a-zA-Z][a-zA-Z]{2,}$/;
+  const PHONE_REGEX = /^\d{11}$/;
+  const MESSAGE_REGEX = /^(?=.*[A-Za-z])[\w\s.,!?'"@#%&()\-:;/]{10,500}$/;
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setContactForm({ ...contactForm, [e.target.id]: e.target.value });
+  };
+
+  //Validates user input fields
+  const validateField = (field: string) => {
+    if (field === "name") {
+      const name = !NAME_REGEX.test(contactForm.name);
+      setFormErrors({ ...formErrors, name });
+    } else if (field === "email") {
+      const email = contactForm.email.trim() ? true : false;
+      setFormErrors({ ...formErrors, email });
+    } else if (field === "phoneNumber") {
+      const phoneNumber = !PHONE_REGEX.test(contactForm.phoneNumber);
+      setFormErrors({ ...formErrors, phoneNumber });
+    } else if (field === "message") {
+      const message = !MESSAGE_REGEX.test(contactForm.message);
+      setFormErrors({ ...formErrors, message });
+    }
+  };
+
+  function validateForm() {
+    ["name", "email", "phoneNumber", "message"].forEach((field) => {
+      validateField(field);
+    });
+    return (
+      !formErrors.name &&
+      !formErrors.email &&
+      !formErrors.phoneNumber &&
+      !formErrors.message
+    );
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Form validation
+    if (!validateForm()) {
+      return;
+    }
+    setIsLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "applcation/json" },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setStatus("Message sent successfully");
+        setContactForm(resetForm);
+      } else {
+        setStatus(`Error: ${res.statusText}`);
+      }
+    } catch (error) {
+      console.log(error);
+      setStatus("Failed to send message");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <StickyNav />
@@ -10,7 +103,9 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-black text-center text-black">CONTACT US</h1>
+          <h1 className="text-5xl md:text-6xl font-black text-center text-black">
+            CONTACT US
+          </h1>
         </div>
       </section>
 
@@ -33,7 +128,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-white text-sm mb-2">
                   Your name
@@ -41,49 +136,95 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="name"
+                  value={contactForm.name}
+                  onChange={handleChange}
+                  onInput={() => validateField("name")}
+                  onBlur={() => validateField("name")}
                   placeholder="Jhon Smith"
+                  required
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
+                {formErrors.name && (
+                  <p className="text-sm text-red-600">
+                    Must be more than 2 characters, letters only
+                  </p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-white text-sm mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-white text-sm mb-2"
+                >
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
+                  value={contactForm.email}
+                  onChange={handleChange}
+                  required
                   placeholder="email@gmail.com"
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
+                {formErrors.email && (
+                  <p className="text-sm text-red-600">
+                    Enter a valid email address
+                  </p>
+                )}
               </div>
-
               <div>
-                <label htmlFor="phone" className="block text-white text-sm mb-2">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-white text-sm mb-2"
+                >
                   Phone number
                 </label>
                 <input
-                  type="tel"
-                  id="phone"
+                  type="text"
+                  id="phoneNumber"
+                  value={contactForm.phoneNumber}
+                  onChange={handleChange}
+                  onInput={() => validateField("phoneNumber")}
+                  onBlur={() => validateField("phoneNumber")}
+                  required
                   placeholder="Jhon Smith"
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
+                {formErrors.phoneNumber && (
+                  <p className="text-sm text-red-600">
+                    Phone number must consist of 11 digits: 08120000000
+                  </p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white text-sm mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-white text-sm mb-2"
+                >
                   Your message
                 </label>
                 <textarea
                   id="message"
+                  value={contactForm.message}
+                  onChange={handleChange}
+                  onInput={() => validateField("message")}
+                  onBlur={() => validateField("message")}
+                  required
                   rows={5}
                   placeholder="Type your message..."
                   className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/50 py-3 px-4 focus:outline-none focus:border-white transition-colors resize-none"
                 />
+                {formErrors.message && (
+                  <p className="text-sm text-red-600">
+                    Message must be at least 10 characters
+                  </p>
+                )}
               </div>
 
               <button className="w-full bg-white text-black font-bold py-4 px-6 hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
-                Send message
+                {!isLoading ? "Send message" : "Sending..."}
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                   fill="currentColor"
@@ -92,7 +233,8 @@ export default function ContactPage() {
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                 </svg>
               </button>
-            </div>
+            </form>
+            {status && <p className="m2-3 text-red-600">{status}</p>}
           </div>
         </div>
       </section>
@@ -103,14 +245,18 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Left side - Contact Info */}
             <div className="space-y-8 order-2 md:order-1">
-              <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">NEED URGENT ASSISTANCE?</h2>
-              
+              <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">
+                NEED URGENT ASSISTANCE?
+              </h2>
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-[#fef5d0]" />
                   </div>
-                  <p className="text-black text-lg">enquiries@ecolionhousing.co.uk</p>
+                  <p className="text-black text-lg">
+                    enquiries@ecolionhousing.co.uk
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -147,5 +293,5 @@ export default function ContactPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
