@@ -1,3 +1,5 @@
+'use client'
+
 import StickyNav from "@/components/sticky-nav"
 import Footer from "@/components/footer"
 import { Mail, Phone, MapPin } from "lucide-react"
@@ -33,7 +35,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <form name="contact" data-netlify="true" className="space-y-6">
+            <form name="contact" method="POST" data-netlify="true" className="space-y-6">
               <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-white text-sm mb-2">
