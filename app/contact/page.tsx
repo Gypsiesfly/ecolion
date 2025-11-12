@@ -33,7 +33,8 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="space-y-6">
+            <form name="contact" data-netlify="true" className="space-y-6">
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-white text-sm mb-2">
                   Your name
@@ -41,6 +42,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   placeholder="Jhon Smith"
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
@@ -53,6 +55,7 @@ export default function ContactPage() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="email@gmail.com"
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
@@ -65,6 +68,7 @@ export default function ContactPage() {
                 <input
                   type="tel"
                   id="phone"
+                  name="phone"
                   placeholder="Jhon Smith"
                   className="w-full bg-transparent border-b border-white/30 text-white placeholder:text-white/50 py-3 px-0 focus:outline-none focus:border-white transition-colors"
                 />
@@ -76,13 +80,14 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   placeholder="Type your message..."
                   className="w-full bg-transparent border border-white/30 text-white placeholder:text-white/50 py-3 px-4 focus:outline-none focus:border-white transition-colors resize-none"
                 />
               </div>
 
-              <button className="w-full bg-white text-black font-bold py-4 px-6 hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
+              <button type="submit" className="w-full bg-white text-black font-bold py-4 px-6 hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
                 Send message
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform"
@@ -92,7 +97,7 @@ export default function ContactPage() {
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                 </svg>
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>
