@@ -1,10 +1,29 @@
 'use client'
 
+import { useState, FormEvent } from "react"
 import StickyNav from "@/components/sticky-nav"
 import Footer from "@/components/footer"
 import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function ContactPage() {
+  const [status, setStatus] = useState("");
+
+      const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("Submitting...");
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    try {
+      await fetch("/__forms.html", {
+        method: "POST",
+        body: formData,
+      });
+      setStatus("Success!");
+    } catch (error) {
+      setStatus("Error");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <StickyNav />
@@ -35,7 +54,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <form name="contact" method="POST" data-netlify="true" className="space-y-6">
+            <form name="contact" onSubmit={handleFormSubmit} className="space-y-6">
               <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-white text-sm mb-2">
@@ -90,7 +109,7 @@ export default function ContactPage() {
               </div>
 
               <button type="submit" className="w-full bg-white text-black font-bold py-4 px-6 hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
-                Send message
+                {status || "Send message"}
                 <svg
                   className="w-5 h-5 group-hover:translate-x-1 transition-transform"
                   fill="currentColor"
