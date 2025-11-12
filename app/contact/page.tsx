@@ -8,10 +8,11 @@ import { Mail, Phone, MapPin } from "lucide-react"
 export default function ContactPage() {
   const [status, setStatus] = useState("");
 
-      const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("Submitting...");
-    const formData = new FormData(event.target as HTMLFormElement);
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     try {
       await fetch("/__forms.html", {
@@ -19,8 +20,11 @@ export default function ContactPage() {
         body: formData,
       });
       setStatus("Success!");
+      form.reset();
+      setTimeout(() => setStatus(""), 3000);
     } catch (error) {
       setStatus("Error");
+      setTimeout(() => setStatus(""), 3000);
     }
   };
 
